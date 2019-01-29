@@ -31,6 +31,7 @@ RSpec.configure do |config|
   # assertions if you prefer.
   config.before(:each) do
     setup_test_database
+    add_test_bookmarks
   end
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
