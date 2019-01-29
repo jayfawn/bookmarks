@@ -18,7 +18,7 @@ get '/add_bookmark' do
 end
 
 post '/submit_url' do
-  Bookmark.create(url: params['url'])
+  Bookmark.create(url: params['URL'])
   redirect '/bookmarks'
 end
 
