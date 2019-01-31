@@ -4,3 +4,9 @@ Please enter the URL below:
   <input type="text" placeholder="title" name="title"/>
   <input type="submit" name="submit" value="Submit"/>
 </form>
+
+<% if flash[:error] %>
+  <p class="error">
+    <%= flash[:error] %>
+  </p>
+<% end %>

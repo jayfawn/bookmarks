@@ -1,4 +1,5 @@
 require 'pg'
+require 'uri'
 require_relative 'database_helpers.rb'
 require_relative 'database_connection'
 
@@ -25,7 +26,7 @@ class Bookmark
 
   def self.update(id:, url:, title:)
     select_connection
-    result = DBConn.query("UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = #{id} RETURNING id, url, title;")
+    result = DBConn.query("UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = '#{id}' RETURNING id, url, title;")
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
@@ -33,6 +34,13 @@ class Bookmark
     select_connection
     result = DBConn.query("SELECT * FROM bookmarks WHERE id = #{id}")
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
+  end
+
+  def self.validate(url)
+    uri = URI.parse(url)
+    uri.kind_of? URI::HTTP
+  rescue URI::InvalidURIError
+    false
   end
 
   attr_reader :url, :title, :id

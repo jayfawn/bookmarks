@@ -5,7 +5,7 @@
 <ul>
   <% @bookmarks.each do |bookmark| %>
     <li class="border" id="bookmark<%= bookmark.id %>" >
-      <a href="https://<%= bookmark.url %>">
+      <a href="<%= bookmark.url %>">
         <%= bookmark.title %>
       </a>
       <form action="/bookmarks/<%= bookmark.id %>" method="post">

@@ -2,6 +2,7 @@ require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
 require 'sinatra'
+require 'sinatra/flash'
 require 'rspec'
 require_relative './../app.rb'
 
@@ -32,7 +33,6 @@ RSpec.configure do |config|
   config.before(:each) do
     setup_connection
     setup_test_database
-    add_test_bookmarks
   end
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
