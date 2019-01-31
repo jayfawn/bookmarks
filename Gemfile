@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 gem 'flog'
 gem 'launchy'
+gem 'pg'
 gem 'rake'
 gem 'sinatra'
-gem 'pg'
 
 group :test do
   gem 'capybara'

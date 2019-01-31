@@ -4,7 +4,7 @@ require 'simplecov-console'
 require 'sinatra'
 require 'rspec'
 require_relative './../app.rb'
-require_relative './features/web_helpers.rb'
+
 Capybara.app = Bookmarks
 
 
@@ -30,6 +30,7 @@ RSpec.configure do |config|
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
   config.before(:each) do
+    setup_connection
     setup_test_database
     add_test_bookmarks
   end
