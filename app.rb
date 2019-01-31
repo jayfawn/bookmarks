@@ -51,4 +51,14 @@ class Bookmarks < Sinatra::Base
       flash[:error] = 'invalid url entered'
     end
   end
+
+  get '/bookmarks/:id/comment' do
+    @bookmark = Bookmark.find(id: params[:id])
+    erb :add_comment
+  end
+
+  post '/submit_comment/:id' do
+    Comment.create(comment: params[:comment], bookmark_id: params[:id])
+    redirect '/bookmarks'
+  end
 end
